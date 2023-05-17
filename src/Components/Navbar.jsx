@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
-  let windowHeight = window.innerHeight - 100;
+  useEffect(() => {
+    document.body.style.overflow = toggleMenu ? "hidden" : "auto";
+  }, [toggleMenu]);
+
   return (
-    <header className="px-6 py-5  max-w-[1440px] mx-auto">
+    <header className="px-6 py-5 max-w-[1440px] mx-auto sticky">
       <nav className="font-[Roboto]">
         <ul className="justify-end gap-8 hidden md:flex">
           <li className="">
@@ -25,16 +28,16 @@ function Navbar() {
           {" "}
         </div>
       </nav>
-      <nav className="flex gap-8 justify-between items-center">
+      <nav className="flex gap-8 justify-between items-center md:h-auto w-full md:static">
         <Link to="/giiki/">
           <img src="./logo.png" alt="Logo" />
         </Link>
         <div
-          className={`flex absolute md:static w-full h-screen gap-4 top-[100px] ${
+          className={`flex absolute md:static h-screen w-full gap-6 top-[100px] ${
             toggleMenu ? "left-[0]" : "left-[-100%]"
-          } transition-all duration-[0.8s] md:h-auto overflow-hidden left-0 flex-col md:flex-row md:justify-between bg-[#ECF9FE] md:bg-[#F5F5F5]`}
+          } transition-all duration-[0.8s] md:h-auto left-0 flex-col items-center md:flex-row md:justify-between bg-[#ECF9FE] md:bg-[#F5F5F5]`}
         >
-          <ul className="flex flex-col md:flex-row gap-6 lg:gap-10 items-center mt-[30%] md:m-0">
+          <ul className="flex flex-col md:flex-row gap-6 lg:gap-10 items-center mt-[50%] md:m-0">
             <li>
               <button onClick={() => setToggleMenu(!toggleMenu)}>
                 <Link to="products">Products</Link>
@@ -78,7 +81,7 @@ function Navbar() {
           ) : (
             <button
               onClick={() => setToggleMenu(!toggleMenu)}
-              className="text-2xl"
+              className="text-4xl"
             >
               &#9776;
             </button>

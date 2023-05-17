@@ -45,7 +45,7 @@ function Footer() {
           <div className="flex flex-col gap-4">
             {footerOtherLinks.map((item, index) => {
               const { title } = item;
-              return <Link>{title}</Link>;
+              return <Link key={index}>{title}</Link>;
             })}
           </div>
         </div>

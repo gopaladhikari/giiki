@@ -30,7 +30,7 @@ function Homepage() {
           <div className="md:basis-1/2 ">
             <img className="mt-[4rem]" src="./goals.png" alt="" />
           </div>
-          <div className="md:basis-1/2 w-full px-12 md:px-0">
+          <div className="md:basis-1/2 w-full md:px-0">
             {HomeCollapseList.map((collapse, index) => {
               return <HomeCollapse key={index} {...collapse} />;
             })}
