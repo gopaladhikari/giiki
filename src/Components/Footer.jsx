@@ -83,7 +83,9 @@ function Footer() {
               </button>
             </form>
           </div>
-          {errors.newsLetter && <p className="ml-3"> {errors.newsLetter} </p>}
+          {errors.newsLetter && (
+            <p className="ml-3 text-[red]"> {errors.newsLetter} </p>
+          )}
         </div>
         <div className="flex flex-col gap-4 ">
           {footerLinks.map((item, index) => {
