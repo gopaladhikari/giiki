@@ -2,7 +2,7 @@ import React from "react";
 
 function HomeBanner() {
   return (
-    <section className="max-w-[1440px] px-6 flex flex-col-reverse md:flex-row mx-auto items-center gap-8 md:gap-0">
+    <section className="px-6 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-0">
       <div className="flex flex-col gap-7 text-[18px]">
         <h2>The School Operating System</h2>
         <h1 className="text-3xl lg:text-[48px] font-semibold lg:pr-52 lg:leading-[56px]">

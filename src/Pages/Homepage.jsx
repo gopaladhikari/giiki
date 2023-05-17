@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import HomeBanner from "../Components/HomeBanner";
 import { HomeImages } from "../data";
+import { HomeCollapseList } from "../data";
+import HomeCollapse from "../Components/HomeCollapse";
 
 function Homepage() {
+  const [showparagraph, setShowparagraph] = useState(false);
   return (
     <>
       <HomeBanner />
 
-      <section className="max-w-[1440px] mx-auto my-12">
+      <section className="my-12">
         <div className="flex justify-around gap-6 flex-wrap">
           {HomeImages.map((image, index) => {
             return (
@@ -19,8 +22,24 @@ function Homepage() {
         </div>
       </section>
 
+      <section className="bg-[#ECF9FE] py-12 px-4">
+        <h1 className="text-center text-5xl">
+          Every School Process. In One Place.{" "}
+        </h1>
+        <div className="flex flex-col md:flex-row md:pr-8 items-center">
+          <div className="md:basis-1/2 ">
+            <img className="mt-[4rem]" src="./goals.png" alt="" />
+          </div>
+          <div className="md:basis-1/2 w-full px-12 md:px-0">
+            {HomeCollapseList.map((collapse, index) => {
+              return <HomeCollapse key={index} {...collapse} />;
+            })}
+          </div>
+        </div>
+      </section>
+
       <section className="text-gray-600 body-font my-24 px-4">
-        <div className="flex max-w-[1440px] mx-auto md:flex-row flex-col-reverse items-center gap-12 md:gap-0 md:justify-around">
+        <div className="flex  md:flex-row flex-col-reverse items-center gap-12 md:gap-0 md:justify-around">
           <div className="basis-[50%] !mt-[-4rem] flex flex-col gap-6 md:items-start md:text-left items-center text-center">
             <h1 className="title-font sm:text-4xl text-3xl font-medium text-gray-900">
               More Time for What Matters
@@ -43,7 +62,7 @@ function Homepage() {
       </section>
 
       <section className="text-gray-600 body-font my-24 px-4">
-        <div className="flex max-w-[1440px] mx-auto md:flex-row flex-col items-center gap-12 md:gap-0 md:justify-between">
+        <div className="flex  md:flex-row flex-col items-center gap-12 md:gap-0 md:justify-between">
           <div className="basis-[50%]">
             <img
               className="lg:ml-[-2rem] xl:ml-[-4rem] "
