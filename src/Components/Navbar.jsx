@@ -27,7 +27,7 @@ function Navbar() {
       </nav>
       <nav className="flex gap-8 justify-between items-center">
         <Link to="/giiki/">
-          <img src="./Giiki.png" alt="Logo" />
+          <img src="./logo.png" alt="Logo" />
         </Link>
         <div
           className={`flex absolute md:static w-full h-screen gap-4 top-[100px] ${
