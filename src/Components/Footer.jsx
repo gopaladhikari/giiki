@@ -2,29 +2,88 @@ import React from "react";
 import { footerLinks } from "../data";
 import { footerOtherLinks } from "../data";
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import axios from "axios";
+
+const validateNewsLetter = yup.object({
+  newsLetter: yup.string().email("Please enter a valid email address"),
+});
 
 function Footer() {
+  const url = "https://jsonplaceholder.typicode.com/posts";
+  const initialValues = {
+    newsLetter: "",
+  };
+
+  const { handleChange, handleSubmit, values, errors, handleBlur } = useFormik({
+    initialValues,
+    validationSchema: validateNewsLetter,
+    onSubmit: (values, action) => {
+      axios
+        .post(url, values.newsLetter)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+      action.resetForm();
+    },
+  });
   return (
     <footer
-      className="bg-[#1E1515] text-white"
+      className="bg-[#1E1515] text-white relative mt-[14rem] md:mt-[12rem]"
       style={{
         borderRadius: "40px 40px 0 0",
       }}
     >
-      <section className="max-w-[1440px] mx-auto px-8 py-6 flex  flex-col md:flex-row gap-12 md:gap-0 justify-between">
+      {" "}
+      <div className="bg-[#64A8DF] rounded-[48px] py-8 absolute w-[95%] lg:w-[80%] px-2 left-1/2 translate-x-[-50%] top-[-8%] md:top-[-16%] mx-auto">
+        <p className="flex flex-wrap text-3xl items-center justify-center gap-2">
+          <span>Unlock your Schools</span>
+          <span>
+            <img src="./img1.png" alt="" />
+          </span>
+          <span>
+            <img src="./img2.png" alt="" />
+          </span>
+          <span>potential —</span>
+        </p>
+        <p className="flex flex-wrap text-3xl items-center justify-center my-4">
+          <span> apply to start today!</span>
+        </p>
+        <div className="w-[113px] mx-auto bg-white text-black flex justify-center items-center gap-3 h-[56px] rounded-[100px]">
+          <button className="text-[#64A8DF] flex items-center gap-4">
+            Join{" "}
+            <div className="bg-[#64A8DF] w-[32px] h-[32px] font-bold text-[18px] rounded-full flex items-center justify-center text-white">
+              {" "}
+              &rarr;{" "}
+            </div>{" "}
+          </button>
+        </div>
+      </div>
+      <section className="max-w-[1440px] mx-auto px-8 pt-[12rem] pb-16 flex flex-col md:flex-row gap-12 md:gap-0 justify-between">
         <div className="flex flex-col gap-4 md:w-[400px]  ">
           <h4 className="text-4xl">Keep Improving.</h4>
           <p className="text-[14px]">Subscribe to Giiki updates</p>
           <div className="bg-[#FFFFFF1A] max-w-[400px] rounded-[100px]">
-            <form className="flex items-center rounded-[100px] px-6">
+            <form
+              onSubmit={handleSubmit}
+              className="flex items-center rounded-[100px] px-6"
+            >
               <input
                 className="py-3 w-full bg-transparent focus:outline-none"
+                name="newsLetter"
                 type="text"
                 placeholder="Enter youe email here"
+                onChange={handleChange}
+                value={values.newsLetter}
+                onBlur={handleBlur}
               />
-              <button className="font-bold text-xl"> &rarr; </button>
+              <button type="submit" className="font-bold text-xl">
+                {" "}
+                &rarr;{" "}
+              </button>
             </form>
           </div>
+          {errors.newsLetter && <p className="ml-3"> {errors.newsLetter} </p>}
         </div>
         <div className="flex flex-col gap-4 ">
           {footerLinks.map((item, index) => {
