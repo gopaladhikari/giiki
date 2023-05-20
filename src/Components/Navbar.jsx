@@ -2,75 +2,94 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const [toggleMenu, setToggleMenu] = useState(false);
-
-  const handleMenuToggle = () => {
-    if (window.innerWidth < 768) {
-      setToggleMenu(!toggleMenu);
-      document.body.style.overflow = toggleMenu ? "auto" : "hidden";
-      console.log(toggleMenu);
-    }
-  };
-
+  const [showToggleMenu, setShowToggleMenu] = useState(false);
+  if (window.innerWidth < 768)
+    document.body.style.overflow = showToggleMenu ? "hidden" : "auto";
   return (
     <header className="px-6 py-5 max-w-[1440px] mx-auto sticky">
-      <nav className="flex gap-3 lg:gap-10 justify-between items-center md:h-auto w-full md:static">
+      <nav className="flex gap-3 lg:gap-10 justify-between items-center md:h-auto w-full">
         <Link to="/giiki/">
           <img src="./logo.png" alt="Logo" />
         </Link>
-        <div
-          className={`flex absolute md:static h-screen w-full gap-2 top-[100px] ${
-            toggleMenu ? "left-[0]" : "left-[-100%]"
-          } transition-all duration-[0.8s] md:h-auto left-0 flex-col items-center md:flex-row md:justify-between bg-[#ECF9FE] md:bg-[#F5F5F5]`}
-        >
-          <ul className="flex flex-col md:flex-row gap-2 lg:gap-10 items-center mt-[50%] md:m-0">
+        {/* Desktop Menu */}
+        <div className="flex max-md:hidden justify-between gap-4 w-full">
+          <ul className="flex flex-col md:flex-row gap-3 md:text-[13px] lg:gap-6 xl:gap-8 lg:text-[16px] items-center">
             <li>
-              <button onClick={handleMenuToggle}>
-                <Link to="products">Products</Link>
-              </button>
+              <Link to="products">Products</Link>
             </li>
             <li>
-              <button onClick={handleMenuToggle}>
-                <Link to="case-studies">Case Studies</Link>
-              </button>
+              <Link to="case-studies">Case Studies</Link>
             </li>
             <li>
-              <button onClick={handleMenuToggle}>
-                <Link to="pricing">Pricing</Link>
-              </button>
+              <Link to="pricing">Pricing</Link>
             </li>
             <li>
-              <button onClick={handleMenuToggle}>
-                <Link to="contact">Contact Sales Team</Link>
-              </button>
+              <Link to="contact">Contact Sales Team</Link>
             </li>
             <li>
-              <button onClick={handleMenuToggle}>
-                <Link to="about">About Giiki</Link>
-              </button>
-            </li>
-            <li>
-              <button className="md:hidden bg-black text-white px-6 py-2  lg:px-10 lg:py-3 rounded-3xl">
-                Book Your Demo
-              </button>
+              <Link to="about">About Giiki</Link>
             </li>
           </ul>
-          <div className="text-center hidden md:block">
+          <div className="text-center hidden md:block text-[13px]">
             <button className="bg-black text-white px-3 py-2  lg:px-10 lg:py-3 rounded-3xl">
               Book Your Demo
             </button>
           </div>
         </div>
-        <div className="md:hidden">
-          {toggleMenu ? (
-            <button onClick={handleMenuToggle} className="text-2xl">
+        {/* Mobile Menu */}{" "}
+        <div
+          className={`flex md:hidden justify-between absolute ${
+            showToggleMenu ? "right-0" : "right-[-100%]"
+          } top-0 bg-blue-300 w-full h-screen pr-6 transition-all duration-300`}
+        >
+          <ul className="flex flex-col gap-4 w-full items-center justify-center">
+            <li>
+              <Link onClick={() => setShowToggleMenu(false)} to="products">
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link onClick={() => setShowToggleMenu(false)} to="case-studies">
+                Case Studies
+              </Link>
+            </li>
+            <li>
+              <Link onClick={() => setShowToggleMenu(false)} to="pricing">
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link onClick={() => setShowToggleMenu(false)} to="contact">
+                Contact Sales Team
+              </Link>
+            </li>
+            <li>
+              <Link onClick={() => setShowToggleMenu(false)} to="about">
+                About Giiki
+              </Link>
+            </li>
+            <li>
+              <button className="bg-black text-white px-8 py-3  lg:px-10 lg:py-3 rounded-3xl">
+                Book Your Demo
+              </button>
+            </li>
+          </ul>
+          <div>
+            <button
+              onClick={() => setShowToggleMenu(!showToggleMenu)}
+              className="text-2xl mt-[36px] font-bold"
+            >
               &#10005;
             </button>
-          ) : (
-            <button onClick={handleMenuToggle} className="text-4xl">
-              &#9776;
-            </button>
-          )}
+          </div>
+        </div>
+        <div className="md:hidden">
+          <button
+            onClick={() => setShowToggleMenu(!showToggleMenu)}
+            className="text-4xl active:bg-transparent"
+          >
+            &#9776;
+          </button>
         </div>
       </nav>
     </header>
