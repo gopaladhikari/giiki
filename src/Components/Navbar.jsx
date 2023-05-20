@@ -30,7 +30,7 @@ function Navbar() {
               <Link to="about">About Giiki</Link>
             </li>
           </ul>
-          <div className="text-center hidden md:block text-[13px]">
+          <div className="text-center hidden md:block text-[13px] lg:text-[16px] ">
             <button className="bg-black text-white px-3 py-2  lg:px-10 lg:py-3 rounded-3xl">
               Book Your Demo
             </button>

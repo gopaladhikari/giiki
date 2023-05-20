@@ -29,7 +29,7 @@ function Footer() {
   });
   return (
     <footer
-      className="bg-[#1E1515] text-white relative mt-[14rem] md:mt-[12rem] z-[-1]"
+      className="bg-[#1E1515] text-white relative mt-[14rem] md:mt-[12rem]"
       style={{
         borderRadius: "40px 40px 0 0",
       }}
