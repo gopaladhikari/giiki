@@ -86,7 +86,7 @@ function Navbar() {
         <div className="md:hidden">
           <button
             onClick={() => setShowToggleMenu(!showToggleMenu)}
-            className="text-4xl active:bg-transparent"
+            className="text-2xl firefox-text-4xl active:bg-transparent"
           >
             &#9776;
           </button>
