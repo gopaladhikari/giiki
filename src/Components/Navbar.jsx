@@ -19,7 +19,7 @@ function Navbar() {
           <img src="./logo.png" alt="Logo" />
         </NavLink>
         {/* Desktop Menu */}
-        <div className="max-md:hidden  gap-4 w-full">
+        <div className="flex justify-between items-center max-md:hidden gap-4 w-full">
           <ul className="flex flex-col md:flex-row gap-4 md:text-[14px] lg:gap-6 xl:gap-8 lg:text-[16px] items-center">
             <li>
               <NavLink
@@ -62,8 +62,8 @@ function Navbar() {
               </NavLink>
             </li>
           </ul>
-          <div className="text-center hidden md:block text-[13px] lg:text-[16px] ">
-            <button className="bg-black text-white px-3 py-2  lg:px-10 lg:py-3 rounded-3xl">
+          <div className="text-center hidden md:block text-[16px] ">
+            <button className="bg-black text-white px-6 py-3  lg:px-10 lg:py-3 rounded-3xl">
               Book Your Demo
             </button>
           </div>
