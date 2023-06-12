@@ -152,3 +152,22 @@ export const pricingCollapseList = [
     para: "Gone are the days with abundance data but no time for action Its time to take action!",
   },
 ];
+
+export const pricingCollapseList2 = [
+  {
+    title: "How long will my plan run?",
+    para: "Gone are the days with abundance data but no time for action Its time to take action!",
+  },
+  {
+    title: "Can I try any plan for free?",
+    para: "Gone are the days with abundance data but no time for action Its time to take action!",
+  },
+  {
+    title: "How can I manage multiple schools?",
+    para: "Gone are the days with abundance data but no time for action Its time to take action!",
+  },
+  {
+    title: "Is there a option to import data?  ",
+    para: "Gone are the days with abundance data but no time for action Its time to take action!",
+  },
+];

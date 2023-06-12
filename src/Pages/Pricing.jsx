@@ -1,4 +1,4 @@
-import { pricingCollapseList } from "../../constants";
+import { pricingCollapseList, pricingCollapseList2 } from "../../constants";
 import Collapse from "../Components/Collapse";
 function Pricing() {
   return (
@@ -56,13 +56,42 @@ function Pricing() {
         </div>
       </section>
       <img
-        className="my-6 w-full px-6 md:px-0"
+        className="my-16 w-full px-6 md:px-0"
         src="/core-function.png"
         alt=""
       />
       <section className="px-6">
         <div>
           {pricingCollapseList.map((item, index) => (
+            <Collapse key={index} {...item} />
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6">
+        <div className="bg-[#E7E0EB] rounded-[48px] px-6 flex flex-col gap-4 py-[100px] lg:justify-center lg:items-center">
+          <h1 className="font-bold text-4xl">Get the Exact Support You Need</h1>
+          <p className="text-[24px]">You can always contact us at</p>
+          <div>
+            <button className="bg-black text-white py-2 px-20 rounded-3xl">
+              Find Out More
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 flex max-md:flex-col gap-6  my-10">
+        <div className="flex-[4]">
+          <h1 className="text-5xl font-bold">
+            Frequently <br className="max-lg:hidden" /> asked{" "}
+            <br className="max-lg:hidden" /> questions
+          </h1>
+          <button className="bg-black text-white px-12 my-6  py-1 lg:px-20 rounded-3xl">
+            Get in Touch
+          </button>
+        </div>
+        <div className="flex-[10]">
+          {pricingCollapseList2.map((item, index) => (
             <Collapse key={index} {...item} />
           ))}
         </div>
