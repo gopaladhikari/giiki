@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/giiki/" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
           <Route path="contact" element={<Contact />} />
           <Route path="about" element={<About />} />

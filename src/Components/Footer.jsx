@@ -1,6 +1,5 @@
 import React from "react";
-import { footerLinks } from "../data";
-import { footerOtherLinks } from "../data";
+import { footerLinks, footerOtherLinks } from "../../constants";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -29,7 +28,7 @@ function Footer() {
   });
   return (
     <footer
-      className="bg-[#1E1515] text-white relative mt-[14rem] md:mt-[12rem]"
+      className="bg-[#1E1515] text-white relative z-10 mt-[14rem] md:mt-[12rem]"
       style={{
         borderRadius: "40px 40px 0 0",
       }}

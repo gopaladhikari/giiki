@@ -1,5 +1,3 @@
-import React from "react";
-
 function HomeBanner() {
   return (
     <section className="px-6 flex flex-col-reverse md:flex-row items-center gap-8 md:gap-0">

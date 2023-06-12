@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-function HomeCollapse({ title, para }) {
+function Collapse({ title, para }) {
   const [showParagraph, setShowParagraph] = useState(false);
   return (
-    <div className="my-8 md:my-10">
+    <div className="my-8 md:my-10 border-b-2 pb-4">
       <div className="flex justify-between items-center">
         <h1 className="text-[18px] md:text-[20px]  lg:text-[24px] font-semibold">
           {title}
@@ -30,4 +30,4 @@ function HomeCollapse({ title, para }) {
   );
 }
 
-export default HomeCollapse;
+export default Collapse;

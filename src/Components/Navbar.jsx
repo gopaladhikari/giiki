@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { navLinks } from "../../constants";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
@@ -13,54 +14,24 @@ function Navbar() {
   }, [showToggleMenu]);
 
   return (
-    <header className="px-6 py-5 max-w-[1440px] mx-auto sticky">
+    <header className="px-6 py-5 max-w-[1440px] mx-auto sticky z-30">
       <nav className="flex gap-3 lg:gap-10 justify-between items-center md:h-auto w-full">
-        <NavLink to="/giiki/">
-          <img src="./logo.png" alt="Logo" />
+        <NavLink to="/">
+          <img src="/logo.png" alt="Logo" />
         </NavLink>
         {/* Desktop Menu */}
         <div className="flex justify-between items-center max-md:hidden gap-4 w-full">
           <ul className="flex flex-col md:flex-row gap-4 md:text-[14px] lg:gap-6 xl:gap-8 lg:text-[16px] items-center">
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-                to="products"
-              >
-                Products
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-                to="case-studies"
-              >
-                Case Studies
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-                to="pricing"
-              >
-                Pricing
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-                to="contact"
-              >
-                Contact Sales Team
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : null)}
-                to="about"
-              >
-                About Giiki
-              </NavLink>
-            </li>
+            {navLinks.map(({ id, title, url }) => (
+              <li key={id}>
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : null)}
+                  to={url}
+                >
+                  {title}
+                </NavLink>
+              </li>
+            ))}
           </ul>
           <div className="text-center hidden md:block text-[16px] ">
             <button className="bg-black text-white px-6 py-3  lg:px-10 lg:py-3 rounded-3xl">
@@ -72,7 +43,7 @@ function Navbar() {
         <div
           className={`flex md:hidden justify-center items-center absolute ${
             showToggleMenu ? "right-0" : "right-[-100%]"
-          } top-0 bg-blue-300 w-full h-screen px-3 transition-all duration-300`}
+          } top-0 bg-blue-300 z-20 w-full h-screen px-3 transition-all duration-300`}
         >
           {" "}
           <div className="absolute top-[35px] right-6">
@@ -84,34 +55,17 @@ function Navbar() {
             </button>
           </div>
           <ul className="flex flex-col gap-4 w-full items-center justify-center">
-            <li>
-              <NavLink onClick={() => setShowToggleMenu(false)} to="products">
-                Products
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                onClick={() => setShowToggleMenu(false)}
-                to="case-studies"
-              >
-                Case Studies
-              </NavLink>
-            </li>
-            <li>
-              <NavLink onClick={() => setShowToggleMenu(false)} to="pricing">
-                Pricing
-              </NavLink>
-            </li>
-            <li>
-              <NavLink onClick={() => setShowToggleMenu(false)} to="contact">
-                Contact Sales Team
-              </NavLink>
-            </li>
-            <li>
-              <NavLink onClick={() => setShowToggleMenu(false)} to="about">
-                About Giiki
-              </NavLink>
-            </li>
+            {navLinks.map(({ id, title, url }) => (
+              <li key={id}>
+                <NavLink
+                  onClick={() => setShowToggleMenu(false)}
+                  style={({ isActive }) => (isActive ? activeStyle : null)}
+                  to={url}
+                >
+                  {title}
+                </NavLink>
+              </li>
+            ))}
             <li>
               <button className="bg-black text-white px-8 py-3  lg:px-10 lg:py-3 rounded-3xl">
                 Book Your Demo

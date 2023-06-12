@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import HomeBanner from "../Components/HomeBanner";
-import { HomeImages } from "../data";
-import { HomeCollapseList } from "../data";
-import HomeCollapse from "../Components/HomeCollapse";
+import { HomeCollapseList, HomeImages } from "../../constants";
+import Collapse from "../Components/Collapse";
 
 function Homepage() {
   const [showparagraph, setShowparagraph] = useState(false);
@@ -32,7 +31,7 @@ function Homepage() {
           </div>
           <div className="md:basis-1/2 w-full md:px-0">
             {HomeCollapseList.map((collapse, index) => {
-              return <HomeCollapse key={index} {...collapse} />;
+              return <Collapse key={index} {...collapse} />;
             })}
           </div>
         </div>
